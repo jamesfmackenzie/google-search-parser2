@@ -1,4 +1,4 @@
-# google-search-parser
+# google-search-parser2
 Parse image and Knowledge Graph data from Google Search results
 
 ## Usage
@@ -6,7 +6,7 @@ Parse image and Knowledge Graph data from Google Search results
 ### Fetch Knowledge Graph Carousel results
 ```javascript
 var request = require("request");
-var Parser = require("google-search-parser");
+var Parser = require("google-search-parser2");
 var parser = new Parser(request);
     
 var searchTerm = "snes games";
@@ -19,7 +19,7 @@ parser.parseKnowledgeGraphCarousel(searchTerm, function (results) {
 ### Fetch Knowledge Graph Panel results
 ```javascript
 var request = require("request");
-var Parser = require("google-search-parser");
+var Parser = require("google-search-parser2");
 var parser = new Parser(request);
     
 var searchTerm = "Super Mario World";
@@ -32,7 +32,7 @@ parser.parseKnowledgeGraphPanel(searchTerm, function (result) {
 ### Fetch image URLs
 ```javascript
 var request = require("request");
-var Parser = require("google-search-parser");
+var Parser = require("google-search-parser2");
 var parser = new Parser(request);
     
 var searchTerm = "Super Mario World";
