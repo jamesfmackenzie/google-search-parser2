@@ -29,7 +29,7 @@ parser.parseKnowledgeGraphPanel(searchTerm, function (result) {
 });
 ```
 
-### Fetch image urls
+### Fetch image URLs
 ```javascript
 var request = require("request");
 var Parser = require("google-search-parser");
