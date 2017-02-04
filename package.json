@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "Parse image and Knowledge Graph data from Google Search results",
   "main": "parser.js",
+  "repository": "jamesfmackenzie/google-search-parser2",
   "dependencies": {
     "htmlparser2": "^3.9.2",
     "request": "^2.79.0"
