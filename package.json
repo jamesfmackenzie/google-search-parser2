@@ -1,5 +1,5 @@
 {
-  "name": "google-search-parser",
+  "name": "google-search-parser2",
   "version": "0.0.2",
   "description": "Parse image and Knowledge Graph data from Google Search results",
   "main": "parser.js",
