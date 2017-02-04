@@ -1,13 +1,43 @@
-# bbcnews-parser
-Parse article data from BBC News home page (http://www.bbc.co.uk/news)
+# google-search-parser
+Parse image and Knowledge Graph data from Google Search results
 
 ## Usage
+
+### Fetch Knowledge Graph Carousel results
 ```javascript
 var request = require("request");
-NewsParser = require("bbcnews-parser"),
-var newsParser = new NewsParser(request);
+var Parser = require("google-search-parser");
+var parser = new Parser(request);
+    
+var searchTerm = "snes games";
 
-newsParser.parseMostReadArticles(function(mostReadArticles) {
-  console.log(mostReadArticles);
+parser.parseKnowledgeGraphCarousel(searchTerm, function (results) {
+  console.log(results); // [ { title: "Super Mario World", year: 1990 }, { title: "Chrono Trigger" ...
+});
+```
+
+### Fetch Knowledge Graph Panel results
+```javascript
+var request = require("request");
+var Parser = require("google-search-parser");
+var parser = new Parser(request);
+    
+var searchTerm = "Super Mario World";
+
+parser.parseKnowledgeGraphPanel(searchTerm, function (result) {
+  console.log(result); // { title: "Super Mario World", genre: "Platform game", developers: [ "Nintendo" ] ...
+});
+```
+
+### Fetch image urls
+```javascript
+var request = require("request");
+var Parser = require("google-search-parser");
+var parser = new Parser(request);
+    
+var searchTerm = "Super Mario World";
+
+parser.parseImageUrls(searchTerm, function (urls) {
+  console.log(urls); // [ "https://upload.wikimedia.org/wikipedia/en/f/f4/Supermarioworld.jpg", "http ...
 });
 ```
