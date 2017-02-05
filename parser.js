@@ -29,7 +29,7 @@ function parseKnowledgeGraphCarousel(html) {
 				if (name === "a" && attribs.class === "klitem") {
 					results.push({
 						title: attribs["aria-label"],
-						year: Number(attribs["title"].match(/(\d+)/g)[0])
+						year: Number(attribs["title"].match(/\((\d+)\)/)[1])
 					});
 				}
 			},

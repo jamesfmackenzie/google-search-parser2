@@ -21,7 +21,7 @@ describe("Parser", function () {
 				});
 			});
 
-			it("returns expected result", function (done) {
+			iit("returns expected result", function (done) {
 				// arrange 
 				var parser = new Parser(request);
 
@@ -30,8 +30,8 @@ describe("Parser", function () {
 
 					// assert
 					var expected = {
-						title: "Super Mario World",
-						year: 1990
+						title: "Donkey Kong Country 2: Diddy's Kong Quest",
+						year: 1995
 					};
 
 					expect(results).toContain(expected);
