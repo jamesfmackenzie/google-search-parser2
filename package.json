@@ -1,6 +1,6 @@
 {
   "name": "google-search-parser2",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "Parse image and Knowledge Graph data from Google Search results",
   "main": "parser.js",
   "repository": "jamesfmackenzie/google-search-parser2",
@@ -14,7 +14,7 @@
     "jasmine-node": "^1.14.5"
   },
   "scripts": {
-    "test": "jasmine-node spec",
+    "test": "jasmine-node spec --captureExceptions",
     "lint": "eslint ."
   },
   "author": "James Mackenzie <me@jamesfmackenzie.com> (http://jamesfmackenzie.com)",

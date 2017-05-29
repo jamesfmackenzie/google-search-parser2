@@ -21,7 +21,7 @@ describe("Parser", function () {
 				});
 			});
 
-			iit("returns expected result", function (done) {
+			it("returns expected result", function (done) {
 				// arrange 
 				var parser = new Parser(request);
 
@@ -80,7 +80,6 @@ describe("Parser", function () {
 
 					// assert
 					expect(results.genre).toEqual("Platform game");
-					expect(results.series).toEqual("Mario Series");
 					expect(results.developers).toContain("Nintendo");
 					expect(results.designers).toContain("Shigeru Miyamoto");
 					expect(results.platforms).toContain("Super Nintendo Entertainment System");
@@ -96,7 +95,7 @@ describe("Parser", function () {
 			var parser = new Parser(request);
 
 			// act
-			parser.parseImageUrls("Super Mario 64", function (result) {
+			parser.parseImageUrls("gloom amiga screenshot", function (result) {
 
 				// assert
 				expect(result.length).toBeGreaterThan(0);
@@ -115,8 +114,9 @@ describe("Parser", function () {
 				for (var i = 0; i < result.length; i++) {
 					var singleResult = result[i];
 
-					expect(singleResult).toEqual(jasmine.any(String));
-					expect(singleResult).toContain("http");
+					expect(singleResult.url).toEqual(jasmine.any(String));
+					expect(singleResult.url).toContain("http");
+					expect(singleResult.caption).toEqual(jasmine.any(String));
 				}
 				done();
 			});

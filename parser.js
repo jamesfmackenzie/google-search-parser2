@@ -27,10 +27,18 @@ function parseKnowledgeGraphCarousel(html) {
 		parser = new htmlparser.Parser({
 			onopentag: function (name, attribs) {
 				if (name === "a" && attribs.class === "klitem") {
-					results.push({
-						title: attribs["aria-label"],
-						year: Number(attribs["title"].match(/\((\d+)\)/)[1])
-					});
+					var match = attribs["title"].match(/\((\d+)\)/);
+					if (match != null && match.length > 0) {
+						results.push({
+							title: attribs["aria-label"],
+							year: Number(match[1])
+						});
+					} else {
+						results.push({
+							title: attribs["aria-label"]
+						});
+					}
+					match = null;
 				}
 			},
 			ontext: function () {},
@@ -75,7 +83,10 @@ function parseImageUrls(html) {
 			ontext: function (text) {
 				if (isInsideMetaTag && count < 12) {
 					var metaObject = JSON.parse(text);
-					results.push(metaObject.ou);
+					results.push({
+						url: metaObject.ou,
+						caption: metaObject.pt
+					});
 					count++;
 				}
 			},
