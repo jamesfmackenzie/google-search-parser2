@@ -76,7 +76,7 @@ function parseImageUrls(html) {
 		count = 0,
 		parser = new htmlparser.Parser({
 			onopentag: function (name, attribs) {
-				if (name === "div" && attribs.class === "rg_meta") {
+				if (name === "div" && attribs.class && attribs.class.includes("rg_meta")) {
 					isInsideMetaTag = true;
 				}
 			},
