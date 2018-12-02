@@ -85,7 +85,8 @@ function parseImageUrls(html) {
 					var metaObject = JSON.parse(text);
 					results.push({
 						url: metaObject.ou,
-						caption: metaObject.pt
+						caption: metaObject.pt,
+						dimensions: metaObject.ow + "x" + metaObject.oh
 					});
 					count++;
 				}
@@ -133,16 +134,16 @@ function parseKnowledgeGraphPanel(html) {
 		value = "",
 		parser = new htmlparser.Parser({
 			onopentag: function (name, attribs) {
-				if (name === "div" && attribs.class === "kno-ecr-pt kno-fb-ctx") {
+				if (name === "div" && attribs.class && attribs.class.includes("kno-ecr-pt") && attribs.class.includes("kno-fb-ctx")) {
 					isInsideTitleTag = true;
 				}
-				if (name === "div" && attribs.class === "_mr kno-fb-ctx") {
+				if (name === "div" && attribs.class && attribs.class.includes("kno-fb-ctx")) {
 					isInsideContextItemTag = true;
 				}
-				if (isInsideContextItemTag && name === "span" && attribs.class === "_xdb") {
+				if (isInsideContextItemTag && name === "span" && attribs.class && !attribs.class.includes("kno-fv")) {
 					isInsideKeyTag = true;
 				}
-				if (isInsideContextItemTag && name === "span" && attribs.class === "_Xbe kno-fv") {
+				if (isInsideContextItemTag && name === "span" && attribs.class && attribs.class.includes("kno-fv")) {
 					isInsideValueTag = true;
 				}
 			},

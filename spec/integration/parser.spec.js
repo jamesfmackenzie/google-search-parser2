@@ -1,4 +1,4 @@
-/*global describe, it, expect, jasmine */
+/*global describe, it, xit, expect, jasmine */
 
 describe("Parser", function () {
 	var request = require("request"),
@@ -21,7 +21,7 @@ describe("Parser", function () {
 				});
 			});
 
-			it("returns expected result", function (done) {
+			it("results have a title", function (done) {
 				// arrange 
 				var parser = new Parser(request);
 
@@ -29,13 +29,16 @@ describe("Parser", function () {
 				parser.parseKnowledgeGraphCarousel(searchTerm, function (results) {
 
 					// assert
-					var expected = {
-						title: "Donkey Kong Country 2: Diddy's Kong Quest",
-						year: 1995
-					};
+					for (var i = 0; i < results.length; i++) {
+						var singleResult = results[i];
 
-					expect(results).toContain(expected);
+						expect(singleResult.title).toEqual(jasmine.any(String));
+					}
 					done();
+				});
+
+				xit("results have a year", function () {
+					// TODO: add missing test for cases when (optionally) results have a year
 				});
 			});
 		});
@@ -58,7 +61,7 @@ describe("Parser", function () {
 				});
 			});
 
-			it("has expected title", function (done) {
+			it("has a title", function (done) {
 				// arrange 
 				var parser = new Parser(request);
 
@@ -66,12 +69,12 @@ describe("Parser", function () {
 				parser.parseKnowledgeGraphPanel(searchTerm, function (results) {
 
 					// assert
-					expect(results.title).toEqual(searchTerm);
+					expect(results.title).toEqual(jasmine.any(String));
 					done();
 				});
 			});
 
-			it("has expected properties", function (done) {
+			it("has properties", function (done) {
 				// arrange 
 				var parser = new Parser(request);
 
@@ -79,10 +82,8 @@ describe("Parser", function () {
 				parser.parseKnowledgeGraphPanel(searchTerm, function (results) {
 
 					// assert
-					expect(results.genre).toEqual("Platform game");
-					expect(results.developers).toContain("Nintendo");
-					expect(results.designers).toContain("Shigeru Miyamoto");
-					expect(results.platforms).toContain("Super Nintendo Entertainment System");
+					expect(Object.keys(results).length).toBeGreaterThan(1);
+
 					done();
 				});
 			});
@@ -103,7 +104,7 @@ describe("Parser", function () {
 			});
 		});
 
-		it("results are urls", function (done) {
+		it("results have a url, caption and dimensions", function (done) {
 			// arrange 
 			var parser = new Parser(request);
 
@@ -117,6 +118,8 @@ describe("Parser", function () {
 					expect(singleResult.url).toEqual(jasmine.any(String));
 					expect(singleResult.url).toContain("http");
 					expect(singleResult.caption).toEqual(jasmine.any(String));
+					expect(singleResult.dimensions).toEqual(jasmine.any(String));
+					expect(singleResult.dimensions).toContain("x");
 				}
 				done();
 			});
