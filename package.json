@@ -1,6 +1,6 @@
 {
   "name": "google-search-parser2",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Parse image and Knowledge Graph data from Google Search results",
   "main": "parser.js",
   "repository": "jamesfmackenzie/google-search-parser2",
