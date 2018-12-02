@@ -38,6 +38,6 @@ var parser = new Parser(request);
 var searchTerm = "Super Mario World";
 
 parser.parseImageUrls(searchTerm, function (urls) {
-  console.log(urls); // [ { url: "https://upload.wikimedia.org/wikipedia/en/f/f4/Supermarioworld.jpg", caption: "foo" }, { url: "http ...
+  console.log(urls); // [ { url: "https://upload.wikimedia.org/wikipedia/en/f/f4/Supermarioworld.jpg", caption: "foo", dimensions: "320x240" }, { url: "http ...
 });
 ```
